@@ -36,7 +36,7 @@ collections:
               - { label: 仓库 ID, name: repoId, widget: string }
               - { label: 评论分类, name: category, widget: string }
               - { label: 评论分类 ID, name: categoryId, widget: string }
-          - label: 分类目录
+          - label: 顶部目录分类
             name: categories
             widget: list
             summary: "{{fields.name}}"
@@ -57,7 +57,7 @@ collections:
             fields:
               - { label: 标题, name: title, widget: string }
               - { label: 链接标识, name: slug, widget: string, hint: "英文或拼音，例如 start-here。每篇文章必须不同。" }
-              - { label: 分类标识, name: category, widget: string, hint: "填写上面分类目录里的 slug，例如 writing。" }
+              - { label: 分类标识, name: category, widget: string, hint: "填写上面顶部目录分类里的 slug，例如 writing。" }
               - { label: 日期, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
               - { label: 摘要, name: excerpt, widget: text }
               - { label: 封面图, name: cover, widget: image, required: false }
@@ -71,6 +71,6 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - { label: 标题, name: title, widget: string }
-              - { label: 分类标识, name: category, widget: string, hint: "填写上面分类目录里的 slug，例如 photos。" }
+              - { label: 分类标识, name: category, widget: string, hint: "填写上面顶部目录分类里的 slug，例如 photos。" }
               - { label: 地点或分类, name: location, widget: string }
               - { label: 图片, name: src, widget: image }

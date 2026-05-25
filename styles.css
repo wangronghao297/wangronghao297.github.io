@@ -80,12 +80,19 @@ textarea {
 
 .site-nav {
   display: flex;
+  align-items: center;
+  flex-wrap: wrap;
   gap: clamp(14px, 3vw, 30px);
   color: var(--muted);
   font-size: 0.95rem;
 }
 
-.site-nav a:hover {
+.category-nav {
+  display: contents;
+}
+
+.site-nav a:hover,
+.site-nav a[aria-current="page"] {
   color: var(--ink);
 }
 

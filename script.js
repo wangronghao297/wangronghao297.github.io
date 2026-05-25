@@ -47,6 +47,23 @@ function renderSiteMeta() {
     setText("about-text", data.about);
     setAttribute("hero-image", "src", data.hero.image);
   }
+
+  renderTopCategoryNav();
+}
+
+function renderTopCategoryNav() {
+  document.querySelectorAll("[data-category-nav]").forEach((nav) => {
+    clearNode(nav);
+    data.categories.forEach((category) => {
+      const link = document.createElement("a");
+      link.href = categoryUrl(category.slug);
+      link.textContent = category.name;
+      if (pageType === "category" && params.get("category") === category.slug) {
+        link.setAttribute("aria-current", "page");
+      }
+      nav.appendChild(link);
+    });
+  });
 }
 
 function renderCategoryCards(containerId, options = {}) {
@@ -131,8 +148,8 @@ function renderArticles(items, options = {}) {
   if (options.limitNote && items.length === options.limit) {
     const more = document.createElement("a");
     more.className = "text-link";
-    more.href = "./categories.html";
-    more.textContent = "查看全部分类";
+    more.href = "./index.html#directory";
+    more.textContent = "查看内容目录";
     list.insertAdjacentElement("afterend", more);
   }
 }
@@ -182,17 +199,13 @@ function renderHome() {
   renderProfile();
 }
 
-function renderCategoriesPage() {
-  renderCategoryCards("category-list");
-}
-
 function renderCategoryPage() {
   const slug = params.get("category") || data.categories[0]?.slug;
   const category = getCategory(slug);
 
   if (!category) {
     setText("category-title", "没有找到这个分类");
-    setText("category-description", "请返回分类目录重新选择。");
+    setText("category-description", "请返回内容目录重新选择。");
     renderArticles([]);
     renderPhotos([]);
     return;
@@ -212,7 +225,7 @@ function renderArticlePage() {
   if (!article) {
     document.title = `文章不存在 | ${data.name}`;
     setText("article-title", "文章不存在");
-    setText("article-excerpt", "请从分类目录重新进入文章。");
+    setText("article-excerpt", "请从顶部目录重新进入文章。");
     return;
   }
 
@@ -222,6 +235,7 @@ function renderArticlePage() {
   setText("article-excerpt", article.excerpt);
   setAttribute("article-cover", "src", article.cover);
   setAttribute("article-cover", "alt", article.title);
+  setAttribute("article-back-link", "href", categoryUrl(article.category));
 
   const body = document.getElementById("article-body");
   clearNode(body);
@@ -288,7 +302,6 @@ async function init() {
     renderSiteMeta();
 
     if (pageType === "home") renderHome();
-    if (pageType === "categories") renderCategoriesPage();
     if (pageType === "category") renderCategoryPage();
     if (pageType === "article") renderArticlePage();
     if (pageType === "photos") renderPhotosPage();

@@ -24,7 +24,7 @@ http://localhost:8000
 - `email`：联系邮箱
 - `hero`：首页大图和标题
 - `about`：关于我
-- `categories`：目录分类
+- `categories`：顶部目录分类
 - `articles`：文章
 - `photos`：照片墙
 
@@ -52,7 +52,7 @@ https://wangronghao297.github.io/admin/
 
 后台可以编辑首页文字、关于我、文章和照片，也可以上传图片。第一次登录时需要用 GitHub 授权当前仓库。
 
-文章和照片都有 `category` 字段，需要填写 `categories` 里的 `slug`，这样它们会出现在对应目录里。
+文章和照片都有 `category` 字段，需要填写 `categories` 里的 `slug`，这样它们会出现在顶部目录和对应分类页里。
 
 文章还有 `slug` 字段，用来生成独立文章链接，例如：
 
