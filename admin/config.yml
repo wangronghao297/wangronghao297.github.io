@@ -1,0 +1,56 @@
+backend:
+  name: github
+  repo: wangronghao297/wangronghao297.github.io
+  branch: main
+
+media_folder: uploads
+public_folder: /uploads
+
+collections:
+  - name: site
+    label: 网站内容
+    files:
+      - name: site_data
+        label: 首页、文章和照片
+        file: site-data.json
+        format: json
+        fields:
+          - { label: 网站名称, name: name, widget: string }
+          - { label: 联系邮箱, name: email, widget: string }
+          - label: 首页大图
+            name: hero
+            widget: object
+            fields:
+              - { label: 小标题, name: kicker, widget: string }
+              - { label: 大标题, name: title, widget: string }
+              - { label: 说明文字, name: subtitle, widget: text }
+              - { label: 首页图片, name: image, widget: image, required: false }
+          - { label: 最新说明, name: intro, widget: text }
+          - { label: 关于我, name: about, widget: text }
+          - label: 个人资料
+            name: profile
+            widget: list
+            fields:
+              - { label: 名称, name: label, widget: string }
+              - { label: 内容, name: value, widget: string }
+          - label: 文章
+            name: articles
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: 标题, name: title, widget: string }
+              - { label: 日期, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
+              - { label: 摘要, name: excerpt, widget: text }
+              - { label: 封面图, name: cover, widget: image, required: false }
+              - label: 正文段落
+                name: body
+                widget: list
+                field: { label: 段落, name: paragraph, widget: text }
+          - label: 照片
+            name: photos
+            widget: list
+            summary: "{{fields.title}}"
+            fields:
+              - { label: 标题, name: title, widget: string }
+              - { label: 地点或分类, name: location, widget: string }
+              - { label: 图片, name: src, widget: image }

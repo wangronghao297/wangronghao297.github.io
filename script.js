@@ -1,4 +1,4 @@
-const data = window.SITE_DATA;
+let data = {};
 
 const setText = (id, value) => {
   const node = document.getElementById(id);
@@ -67,7 +67,9 @@ function renderProfile() {
   const list = document.getElementById("profile-list");
   list.innerHTML = "";
 
-  data.profile.forEach(([label, value]) => {
+  data.profile.forEach((item) => {
+    const label = Array.isArray(item) ? item[0] : item.label;
+    const value = Array.isArray(item) ? item[1] : item.value;
     const term = document.createElement("dt");
     const description = document.createElement("dd");
     term.textContent = label;
@@ -101,7 +103,22 @@ document.getElementById("article-dialog").addEventListener("click", (event) => {
   if (event.target.id === "article-dialog") event.target.close();
 });
 
-renderSiteMeta();
-renderArticles();
-renderPhotos();
-renderProfile();
+async function init() {
+  try {
+    const response = await fetch("./site-data.json");
+    if (!response.ok) throw new Error("Cannot load site data");
+    data = await response.json();
+    renderSiteMeta();
+    renderArticles();
+    renderPhotos();
+    renderProfile();
+  } catch (error) {
+    document.body.insertAdjacentHTML(
+      "afterbegin",
+      `<div class="load-error">网站数据暂时没有加载成功，请稍后刷新。</div>`,
+    );
+    console.error(error);
+  }
+}
+
+init();
