@@ -9,6 +9,12 @@
   },
   "intro": "一些观察、想法、学习记录，以及值得留下来的瞬间。",
   "about": "你好，我正在搭建自己的个人网站。这里会放文章、照片、项目和一些认真生活的证据。",
+  "comments": {
+    "repo": "wangronghao297/wangronghao297.github.io",
+    "repoId": "R_kgDOSnSiRA",
+    "category": "General",
+    "categoryId": "DIC_kwDOSnSiRM4C9z-p"
+  },
   "categories": [
     {
       "slug": "life",
@@ -48,6 +54,7 @@
   "articles": [
     {
       "title": "第一篇文章：从这里开始",
+      "slug": "start-here",
       "category": "writing",
       "date": "2026-05-25",
       "excerpt": "这是网站上的第一篇文章。你可以把它换成自己的故事、想法或学习记录。",
@@ -60,6 +67,7 @@
     },
     {
       "title": "一些值得保存的瞬间",
+      "slug": "saved-moments",
       "category": "life",
       "date": "2026-05-24",
       "excerpt": "照片和文字放在一起，会让很多普通的日子变得更容易被记住。",
@@ -72,6 +80,7 @@
     },
     {
       "title": "给未来的自己留一个入口",
+      "slug": "future-entrance",
       "category": "projects",
       "date": "2026-05-23",
       "excerpt": "个人网站像一个慢慢生长的房间，不需要一开始就完整，但值得先拥有。",

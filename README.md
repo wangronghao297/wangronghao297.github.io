@@ -54,6 +54,22 @@ https://wangronghao297.github.io/admin/
 
 文章和照片都有 `category` 字段，需要填写 `categories` 里的 `slug`，这样它们会出现在对应目录里。
 
+文章还有 `slug` 字段，用来生成独立文章链接，例如：
+
+```text
+https://wangronghao297.github.io/article.html?slug=start-here
+```
+
+## 评论
+
+文章页使用 Giscus 评论。仓库需要开启 Discussions，并安装 Giscus GitHub App：
+
+```text
+https://github.com/apps/giscus
+```
+
+安装时选择 `wangronghao297/wangronghao297.github.io` 仓库。评论会按文章 `slug` 分开保存。
+
 ## 让别人看到
 
 最简单的方式是把这个文件夹上传到 GitHub，然后开启 GitHub Pages。也可以直接拖到 Netlify 或 Vercel 创建静态网站。

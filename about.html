@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>关于</title>
+    <meta name="description" content="关于这个个人网站和作者。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="回到首页">
+        <span class="brand-mark">自</span>
+        <span id="site-name">我的网站</span>
+      </a>
+
+      <nav class="site-nav" aria-label="主要导航">
+        <a href="./categories.html">分类</a>
+        <a href="./photos.html">照片</a>
+        <a href="./about.html">关于</a>
+        <a href="./admin/">后台</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="section about-section standalone-about" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="kicker">About</p>
+          <h1 id="about-title">关于我</h1>
+          <p id="about-text"></p>
+        </div>
+        <dl class="profile-list" id="profile-list"></dl>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p id="footer-text">© 2026 我的网站</p>
+      <a id="mail-link" href="mailto:hello@example.com">联系我</a>
+    </footer>
+
+    <script>
+      window.PAGE_TYPE = "about";
+    </script>
+    <script src="./script.js"></script>
+  </body>
+</html>

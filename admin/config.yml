@@ -27,6 +27,15 @@ collections:
               - { label: 首页图片, name: image, widget: image, required: false }
           - { label: 最新说明, name: intro, widget: text }
           - { label: 关于我, name: about, widget: text }
+          - label: 评论配置
+            name: comments
+            widget: object
+            collapsed: true
+            fields:
+              - { label: GitHub 仓库, name: repo, widget: string }
+              - { label: 仓库 ID, name: repoId, widget: string }
+              - { label: 评论分类, name: category, widget: string }
+              - { label: 评论分类 ID, name: categoryId, widget: string }
           - label: 分类目录
             name: categories
             widget: list
@@ -47,6 +56,7 @@ collections:
             summary: "{{fields.title}}"
             fields:
               - { label: 标题, name: title, widget: string }
+              - { label: 链接标识, name: slug, widget: string, hint: "英文或拼音，例如 start-here。每篇文章必须不同。" }
               - { label: 分类标识, name: category, widget: string, hint: "填写上面分类目录里的 slug，例如 writing。" }
               - { label: 日期, name: date, widget: datetime, format: "YYYY-MM-DD", date_format: "YYYY-MM-DD", time_format: false }
               - { label: 摘要, name: excerpt, widget: text }

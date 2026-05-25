@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>分类</title>
+    <meta name="description" content="查看某个分类下的文章和照片。" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="./index.html" aria-label="回到首页">
+        <span class="brand-mark">自</span>
+        <span id="site-name">我的网站</span>
+      </a>
+
+      <nav class="site-nav" aria-label="主要导航">
+        <a href="./categories.html">分类</a>
+        <a href="./photos.html">照片</a>
+        <a href="./about.html">关于</a>
+        <a href="./admin/">后台</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-hero compact-hero" aria-labelledby="category-title">
+        <p class="kicker">Category</p>
+        <h1 id="category-title">分类</h1>
+        <p id="category-description"></p>
+      </section>
+
+      <section class="section content-section">
+        <div class="section-heading">
+          <div>
+            <p class="kicker">Articles</p>
+            <h2>文章</h2>
+          </div>
+        </div>
+        <div id="article-list" class="article-grid"></div>
+        <p id="article-empty" class="empty-state">这个分类暂时还没有文章。</p>
+
+        <div class="section-heading section-heading-spaced">
+          <div>
+            <p class="kicker">Photos</p>
+            <h2>照片</h2>
+          </div>
+        </div>
+        <div id="photo-list" class="photo-grid"></div>
+        <p id="photo-empty" class="empty-state">这个分类暂时还没有照片。</p>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p id="footer-text">© 2026 我的网站</p>
+      <a id="mail-link" href="mailto:hello@example.com">联系我</a>
+    </footer>
+
+    <script>
+      window.PAGE_TYPE = "category";
+    </script>
+    <script src="./script.js"></script>
+  </body>
+</html>
