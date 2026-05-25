@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的个人网站</title>
+    <meta
+      name="description"
+      content="一个用来写文章、放照片、记录生活和作品的个人网站。"
+    />
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#top" aria-label="回到首页">
+        <span class="brand-mark">自</span>
+        <span id="site-name">我的网站</span>
+      </a>
+
+      <nav class="site-nav" aria-label="主要导航">
+        <a href="#articles">文章</a>
+        <a href="#photos">照片</a>
+        <a href="#about">关于</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero" aria-labelledby="hero-title">
+        <div class="hero-media" aria-hidden="true">
+          <img
+            id="hero-image"
+            src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1800&q=85"
+            alt=""
+          />
+        </div>
+        <div class="hero-content">
+          <p id="hero-kicker" class="kicker">个人记录</p>
+          <h1 id="hero-title">把文章、照片和生活片段放在同一个地方。</h1>
+          <p id="hero-subtitle" class="hero-copy">
+            这里会慢慢长出你的想法、旅途、作品和日常。
+          </p>
+          <div class="hero-actions">
+            <a class="button primary" href="#articles">读文章</a>
+            <a class="button secondary" href="#photos">看照片</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section intro-band" aria-labelledby="intro-title">
+        <div>
+          <p class="kicker">最新</p>
+          <h2 id="intro-title">最近写下的东西</h2>
+        </div>
+        <p id="intro-text">
+          一些观察、想法、学习记录，以及值得留下来的瞬间。
+        </p>
+      </section>
+
+      <section id="articles" class="section" aria-labelledby="articles-title">
+        <div class="section-heading">
+          <p class="kicker">Articles</p>
+          <h2 id="articles-title">文章</h2>
+        </div>
+        <div id="article-list" class="article-grid"></div>
+      </section>
+
+      <section id="photos" class="section photo-section" aria-labelledby="photos-title">
+        <div class="section-heading">
+          <p class="kicker">Photos</p>
+          <h2 id="photos-title">照片</h2>
+        </div>
+        <div id="photo-list" class="photo-grid"></div>
+      </section>
+
+      <section id="about" class="section about-section" aria-labelledby="about-title">
+        <div class="about-copy">
+          <p class="kicker">About</p>
+          <h2 id="about-title">关于我</h2>
+          <p id="about-text">
+            这里可以写你是谁、正在做什么、喜欢什么，以及别人可以怎样联系你。
+          </p>
+        </div>
+        <dl class="profile-list" id="profile-list"></dl>
+      </section>
+    </main>
+
+    <dialog id="article-dialog" class="article-dialog" aria-labelledby="dialog-title">
+      <button class="icon-button" id="close-dialog" aria-label="关闭文章">×</button>
+      <article>
+        <p class="kicker" id="dialog-date"></p>
+        <h2 id="dialog-title"></h2>
+        <div id="dialog-body" class="article-body"></div>
+      </article>
+    </dialog>
+
+    <footer class="site-footer">
+      <p id="footer-text">© 2026 我的网站</p>
+      <a id="mail-link" href="mailto:hello@example.com">联系我</a>
+    </footer>
+
+    <script src="./site-data.js"></script>
+    <script src="./script.js"></script>
+  </body>
+</html>
