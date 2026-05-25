@@ -1,4 +1,5 @@
 let data = {};
+let selectedCategory = "recent";
 
 const setText = (id, value) => {
   const node = document.getElementById(id);
@@ -26,9 +27,13 @@ function renderSiteMeta() {
 
 function renderArticles() {
   const list = document.getElementById("article-list");
+  const empty = document.getElementById("article-empty");
   list.innerHTML = "";
 
-  data.articles.forEach((article, index) => {
+  const articles = getVisibleItems(data.articles);
+  empty.hidden = articles.length > 0;
+
+  articles.forEach((article) => {
     const card = document.createElement("button");
     card.className = "article-card";
     card.type = "button";
@@ -40,16 +45,20 @@ function renderArticles() {
         <span>${article.excerpt}</span>
       </span>
     `;
-    card.addEventListener("click", () => openArticle(index));
+    card.addEventListener("click", () => openArticle(article));
     list.appendChild(card);
   });
 }
 
 function renderPhotos() {
   const list = document.getElementById("photo-list");
+  const empty = document.getElementById("photo-empty");
   list.innerHTML = "";
 
-  data.photos.forEach((photo) => {
+  const photos = getVisibleItems(data.photos);
+  empty.hidden = photos.length > 0;
+
+  photos.forEach((photo) => {
     const figure = document.createElement("figure");
     figure.className = "photo-card";
     figure.innerHTML = `
@@ -61,6 +70,73 @@ function renderPhotos() {
     `;
     list.appendChild(figure);
   });
+}
+
+function renderDirectory() {
+  const list = document.getElementById("category-list");
+  list.innerHTML = "";
+
+  const categories = [
+    {
+      slug: "recent",
+      name: "最近内容",
+      description: "首页先看少量最新更新",
+      count: Math.min(data.articles.length, 2) + Math.min(data.photos.length, 2),
+    },
+    ...data.categories.map((category) => ({
+      ...category,
+      count:
+        data.articles.filter((item) => item.category === category.slug).length +
+        data.photos.filter((item) => item.category === category.slug).length,
+    })),
+  ];
+
+  categories.forEach((category) => {
+    const button = document.createElement("button");
+    button.className = "category-button";
+    button.type = "button";
+    button.dataset.category = category.slug;
+    button.setAttribute(
+      "aria-pressed",
+      String(category.slug === selectedCategory),
+    );
+    button.innerHTML = `
+      <span>
+        <strong>${category.name}</strong>
+        <small>${category.description}</small>
+      </span>
+      <em>${category.count}</em>
+    `;
+    button.addEventListener("click", () => selectCategory(category.slug));
+    list.appendChild(button);
+  });
+
+  renderContentHeading();
+}
+
+function selectCategory(category) {
+  selectedCategory = category;
+  history.replaceState(null, "", `#${category}`);
+  renderDirectory();
+  renderArticles();
+  renderPhotos();
+  document.getElementById("content").scrollIntoView({ behavior: "smooth" });
+}
+
+function getVisibleItems(items) {
+  if (selectedCategory === "recent") return items.slice(0, 2);
+  return items.filter((item) => item.category === selectedCategory);
+}
+
+function renderContentHeading() {
+  const current =
+    selectedCategory === "recent"
+      ? { name: "最近内容", description: "先放一部分最新文章和照片，其余内容可以按分类查看。" }
+      : data.categories.find((category) => category.slug === selectedCategory);
+
+  if (!current) return;
+  setText("content-title", current.name);
+  setText("content-description", current.description);
 }
 
 function renderProfile() {
@@ -78,8 +154,7 @@ function renderProfile() {
   });
 }
 
-function openArticle(index) {
-  const article = data.articles[index];
+function openArticle(article) {
   const dialog = document.getElementById("article-dialog");
   setText("dialog-date", article.date);
   setText("dialog-title", article.title);
@@ -108,7 +183,9 @@ async function init() {
     const response = await fetch("./site-data.json");
     if (!response.ok) throw new Error("Cannot load site data");
     data = await response.json();
+    selectedCategory = getInitialCategory();
     renderSiteMeta();
+    renderDirectory();
     renderArticles();
     renderPhotos();
     renderProfile();
@@ -122,3 +199,11 @@ async function init() {
 }
 
 init();
+
+function getInitialCategory() {
+  const hash = decodeURIComponent(window.location.hash.replace("#", ""));
+  if (hash && data.categories.some((category) => category.slug === hash)) {
+    return hash;
+  }
+  return "recent";
+}

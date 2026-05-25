@@ -9,6 +9,28 @@
   },
   "intro": "一些观察、想法、学习记录，以及值得留下来的瞬间。",
   "about": "你好，我正在搭建自己的个人网站。这里会放文章、照片、项目和一些认真生活的证据。",
+  "categories": [
+    {
+      "slug": "life",
+      "name": "生活记录",
+      "description": "日常、心情和那些值得留下来的瞬间。"
+    },
+    {
+      "slug": "writing",
+      "name": "随笔文章",
+      "description": "想法、观察、学习记录和长一点的文字。"
+    },
+    {
+      "slug": "photos",
+      "name": "照片影像",
+      "description": "旅行、城市、工作台，以及用镜头收集的画面。"
+    },
+    {
+      "slug": "projects",
+      "name": "作品项目",
+      "description": "以后可以放作品、项目、开发记录和阶段复盘。"
+    }
+  ],
   "profile": [
     {
       "label": "位置",
@@ -26,6 +48,7 @@
   "articles": [
     {
       "title": "第一篇文章：从这里开始",
+      "category": "writing",
       "date": "2026-05-25",
       "excerpt": "这是网站上的第一篇文章。你可以把它换成自己的故事、想法或学习记录。",
       "cover": "https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1200&q=85",
@@ -37,6 +60,7 @@
     },
     {
       "title": "一些值得保存的瞬间",
+      "category": "life",
       "date": "2026-05-24",
       "excerpt": "照片和文字放在一起，会让很多普通的日子变得更容易被记住。",
       "cover": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1200&q=85",
@@ -48,6 +72,7 @@
     },
     {
       "title": "给未来的自己留一个入口",
+      "category": "projects",
       "date": "2026-05-23",
       "excerpt": "个人网站像一个慢慢生长的房间，不需要一开始就完整，但值得先拥有。",
       "cover": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=1200&q=85",
@@ -61,21 +86,25 @@
   "photos": [
     {
       "title": "山间傍晚",
+      "category": "photos",
       "location": "旅途",
       "src": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=900&q=85"
     },
     {
       "title": "城市一角",
+      "category": "photos",
       "location": "日常",
       "src": "https://images.unsplash.com/photo-1494526585095-c41746248156?auto=format&fit=crop&w=900&q=85"
     },
     {
       "title": "安静工作台",
+      "category": "projects",
       "location": "记录",
       "src": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=900&q=85"
     },
     {
       "title": "夜色",
+      "category": "life",
       "location": "散步",
       "src": "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=85"
     }
