@@ -9,7 +9,7 @@
       content="一个用来写文章、放照片、记录生活和作品的个人网站。"
     />
     <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="stylesheet" href="./styles.css?v=home-blocks-1" />
+    <link rel="stylesheet" href="./styles.css?v=home-blocks-2" />
   </head>
   <body>
     <header class="site-header">
@@ -32,6 +32,17 @@
       </section>
 
       <section class="home-block-section" aria-label="内容流">
+        <aside class="home-sidebar" aria-label="网站介绍和目录">
+          <div class="home-sidebar-panel">
+            <p class="kicker">About</p>
+            <h2 id="home-about-title">关于本站</h2>
+            <p id="home-about-text"></p>
+          </div>
+          <div class="home-sidebar-panel">
+            <p class="kicker">Directory</p>
+            <nav id="home-directory-list" class="home-directory-list" aria-label="内容目录"></nav>
+          </div>
+        </aside>
         <div id="home-block-list" class="home-block-list"></div>
       </section>
     </main>
@@ -44,6 +55,6 @@
     <script>
       window.PAGE_TYPE = "home";
     </script>
-    <script src="./script.js?v=home-blocks-1"></script>
+    <script src="./script.js?v=home-blocks-2"></script>
   </body>
 </html>

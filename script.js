@@ -193,7 +193,28 @@ function renderProfile() {
 }
 
 function renderHome() {
+  renderHomeSidebar();
   renderHomeBlocks();
+}
+
+function renderHomeSidebar() {
+  setText("home-about-text", data.about);
+
+  const list = document.getElementById("home-directory-list");
+  if (!list) return;
+  clearNode(list);
+
+  data.categories.forEach((category) => {
+    const link = document.createElement("a");
+    link.href = categoryUrl(category.slug);
+    link.innerHTML = `
+      <span>
+        <strong>${category.name}</strong>
+        <small>${category.description}</small>
+      </span>
+    `;
+    list.appendChild(link);
+  });
 }
 
 function renderHomeBlocks() {
