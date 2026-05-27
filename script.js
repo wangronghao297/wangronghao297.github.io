@@ -45,7 +45,9 @@ function renderSiteMeta() {
     setText("hero-subtitle", data.hero.subtitle);
     setText("intro-text", data.intro);
     setText("about-text", data.about);
-    setAttribute("hero-image", "src", data.hero.image);
+    document
+      .querySelector(".hero")
+      ?.style.setProperty("--hero-image", `url("${data.hero.image}")`);
   }
 
   renderTopCategoryNav();
@@ -295,7 +297,9 @@ function renderComments(article) {
 
 async function init() {
   try {
-    const response = await fetch("./site-data.json");
+    const response = await fetch(`./site-data.json?v=${Date.now()}`, {
+      cache: "no-store",
+    });
     if (!response.ok) throw new Error("Cannot load site data");
     data = await response.json();
 
