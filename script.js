@@ -32,6 +32,11 @@ function getCategoryName(slug) {
 }
 
 function renderSiteMeta() {
+  document.documentElement.style.setProperty(
+    "--site-background-image",
+    `url("${data.hero.image}")`,
+  );
+
   document.title =
     pageType === "home" ? data.name : `${document.title} | ${data.name}`;
   setText("site-name", data.name);
@@ -45,9 +50,6 @@ function renderSiteMeta() {
     setText("hero-subtitle", data.hero.subtitle);
     setText("intro-text", data.intro);
     setText("about-text", data.about);
-    document
-      .querySelector(".hero")
-      ?.style.setProperty("--hero-image", `url("${data.hero.image}")`);
   }
 
   renderTopCategoryNav();
