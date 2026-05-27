@@ -9,7 +9,7 @@
       content="一个用来写文章、放照片、记录生活和作品的个人网站。"
     />
     <link rel="preconnect" href="https://images.unsplash.com" />
-    <link rel="stylesheet" href="./styles.css?v=site-bg-1" />
+    <link rel="stylesheet" href="./styles.css?v=home-blocks-1" />
   </head>
   <body>
     <header class="site-header">
@@ -27,83 +27,14 @@
     </header>
 
     <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <div class="hero-content">
-          <p id="hero-kicker" class="kicker">个人记录</p>
-          <h1 id="hero-title">把文章、照片和生活片段放在同一个地方。</h1>
-          <p id="hero-subtitle" class="hero-copy">
-            这里会慢慢长出你的想法、旅途、作品和日常。
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#directory">看目录</a>
-            <a class="button secondary" href="./photos.html">看照片</a>
-          </div>
-        </div>
+      <section class="home-title-screen" aria-labelledby="home-site-title">
+        <h1 id="home-site-title">我的网站</h1>
       </section>
 
-      <section class="section intro-band" aria-labelledby="intro-title">
-        <div>
-          <p class="kicker">最新</p>
-          <h2 id="intro-title">最近写下的东西</h2>
-        </div>
-        <p id="intro-text">
-          一些观察、想法、学习记录，以及值得留下来的瞬间。
-        </p>
-      </section>
-
-      <section id="directory" class="section directory-section" aria-labelledby="directory-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">Directory</p>
-            <h2 id="directory-title">内容目录</h2>
-          </div>
-          <p id="directory-note">选择一个分类，只看你想看的内容。</p>
-        </div>
-        <div id="category-list" class="category-list" aria-label="内容分类"></div>
-      </section>
-
-      <section id="content" class="section content-section" aria-labelledby="content-title">
-        <div class="section-heading">
-          <div>
-            <p class="kicker">Now Viewing</p>
-            <h2 id="content-title">最近内容</h2>
-          </div>
-          <p id="content-description">先放一部分最新文章和照片，其余内容可以按分类查看。</p>
-        </div>
-
-        <div class="content-group" aria-labelledby="articles-title">
-          <h3 id="articles-title">文章</h3>
-          <div id="article-list" class="article-grid"></div>
-          <p id="article-empty" class="empty-state">这个分类暂时还没有文章。</p>
-        </div>
-
-        <div class="content-group" aria-labelledby="photos-title">
-          <h3 id="photos-title">照片</h3>
-          <div id="photo-list" class="photo-grid"></div>
-          <p id="photo-empty" class="empty-state">这个分类暂时还没有照片。</p>
-        </div>
-      </section>
-
-      <section id="about" class="section about-section" aria-labelledby="about-title">
-        <div class="about-copy">
-          <p class="kicker">About</p>
-          <h2 id="about-title">关于我</h2>
-          <p id="about-text">
-            这里可以写你是谁、正在做什么、喜欢什么，以及别人可以怎样联系你。
-          </p>
-        </div>
-        <dl class="profile-list" id="profile-list"></dl>
+      <section class="home-block-section" aria-label="内容流">
+        <div id="home-block-list" class="home-block-list"></div>
       </section>
     </main>
-
-    <dialog id="article-dialog" class="article-dialog" aria-labelledby="dialog-title">
-      <button class="icon-button" id="close-dialog" aria-label="关闭文章">×</button>
-      <article>
-        <p class="kicker" id="dialog-date"></p>
-        <h2 id="dialog-title"></h2>
-        <div id="dialog-body" class="article-body"></div>
-      </article>
-    </dialog>
 
     <footer class="site-footer">
       <p id="footer-text">© 2026 我的网站</p>
@@ -113,6 +44,6 @@
     <script>
       window.PAGE_TYPE = "home";
     </script>
-    <script src="./script.js?v=site-bg-1"></script>
+    <script src="./script.js?v=home-blocks-1"></script>
   </body>
 </html>

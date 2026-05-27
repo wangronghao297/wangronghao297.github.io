@@ -45,11 +45,7 @@ function renderSiteMeta() {
   setAttribute("mail-link", "href", `mailto:${data.email}`);
 
   if (pageType === "home") {
-    setText("hero-kicker", data.hero.kicker);
-    setText("hero-title", data.hero.title);
-    setText("hero-subtitle", data.hero.subtitle);
-    setText("intro-text", data.intro);
-    setText("about-text", data.about);
+    setText("home-site-title", data.name);
   }
 
   renderTopCategoryNav();
@@ -197,10 +193,49 @@ function renderProfile() {
 }
 
 function renderHome() {
-  renderCategoryCards("category-list");
-  renderArticles(data.articles.slice(0, 2));
-  renderPhotos(data.photos.slice(0, 2));
-  renderProfile();
+  renderHomeBlocks();
+}
+
+function renderHomeBlocks() {
+  const list = document.getElementById("home-block-list");
+  if (!list) return;
+  clearNode(list);
+
+  const blocks = [
+    ...data.articles.map((article) => ({
+      type: "文章",
+      title: article.title,
+      text: article.excerpt,
+      image: article.cover,
+      meta: `${article.date} · ${getCategoryName(article.category)}`,
+      href: articleUrl(article),
+    })),
+    ...data.photos.map((photo) => ({
+      type: "照片",
+      title: photo.title,
+      text: photo.location,
+      image: photo.src,
+      meta: getCategoryName(photo.category),
+      href: `./photos.html?category=${encodeURIComponent(photo.category)}`,
+    })),
+  ];
+
+  blocks.forEach((block, index) => {
+    const card = document.createElement("a");
+    card.className = `home-block ${index % 3 === 0 ? "large" : ""}`;
+    card.href = block.href;
+    card.style.setProperty("--block-image", `url("${block.image}")`);
+    card.innerHTML = `
+      <span class="home-block-image" aria-hidden="true"></span>
+      <span class="home-block-copy">
+        <span class="home-block-type">${block.type}</span>
+        <strong>${block.title}</strong>
+        <small>${block.meta}</small>
+        <span>${block.text}</span>
+      </span>
+    `;
+    list.appendChild(card);
+  });
 }
 
 function renderCategoryPage() {

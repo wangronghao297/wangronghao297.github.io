@@ -24,9 +24,7 @@ body {
   margin: 0;
   min-height: 100svh;
   background-color: #24201d;
-  background-image:
-    linear-gradient(rgba(250, 248, 243, 0.84), rgba(250, 248, 243, 0.9)),
-    var(--site-background-image);
+  background-image: var(--site-background-image);
   background-attachment: fixed;
   background-position: center;
   background-size: cover;
@@ -62,8 +60,8 @@ textarea {
   justify-content: space-between;
   min-height: 72px;
   padding: 14px clamp(18px, 5vw, 64px);
-  background: rgba(250, 248, 243, 0.82);
-  border-bottom: 1px solid rgba(222, 216, 207, 0.75);
+  background: rgba(12, 13, 13, 0.16);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.18);
   backdrop-filter: blur(18px);
 }
 
@@ -73,6 +71,8 @@ textarea {
   gap: 10px;
   min-width: 0;
   font-weight: 750;
+  color: white;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
 }
 
 .brand-mark {
@@ -91,7 +91,7 @@ textarea {
   align-items: center;
   flex-wrap: wrap;
   gap: clamp(14px, 3vw, 30px);
-  color: var(--muted);
+  color: rgba(255, 255, 255, 0.82);
   font-size: 0.95rem;
 }
 
@@ -101,7 +101,103 @@ textarea {
 
 .site-nav a:hover,
 .site-nav a[aria-current="page"] {
-  color: var(--ink);
+  color: white;
+}
+
+.home-title-screen {
+  min-height: calc(100svh - 72px);
+  display: grid;
+  place-items: center;
+  padding: 48px 18px;
+}
+
+.home-title-screen h1 {
+  max-width: min(90vw, 980px);
+  margin: 0;
+  color: white;
+  font-size: clamp(3.8rem, 12vw, 10rem);
+  font-weight: 850;
+  line-height: 0.92;
+  text-align: center;
+  text-shadow:
+    0 2px 18px rgba(0, 0, 0, 0.45),
+    0 18px 60px rgba(0, 0, 0, 0.34);
+}
+
+.home-block-section {
+  width: min(1180px, calc(100% - 36px));
+  margin: 0 auto;
+  padding: 0 0 clamp(80px, 12vw, 150px);
+}
+
+.home-block-list {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.home-block {
+  position: relative;
+  min-height: 320px;
+  overflow: hidden;
+  border-radius: 8px;
+  color: white;
+  background: rgba(18, 20, 20, 0.34);
+  box-shadow: 0 18px 54px rgba(0, 0, 0, 0.26);
+  isolation: isolate;
+}
+
+.home-block.large {
+  grid-row: span 2;
+  min-height: 520px;
+}
+
+.home-block::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(0deg, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.1) 62%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.36), rgba(0, 0, 0, 0));
+}
+
+.home-block-image {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  background-image: var(--block-image);
+  background-position: center;
+  background-size: cover;
+  transition: transform 360ms ease;
+}
+
+.home-block:hover .home-block-image {
+  transform: scale(1.05);
+}
+
+.home-block-copy {
+  position: absolute;
+  inset: auto 0 0;
+  display: grid;
+  gap: 8px;
+  padding: 22px;
+}
+
+.home-block-type {
+  color: rgba(255, 255, 255, 0.76);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.home-block strong {
+  font-size: clamp(1.25rem, 2.4vw, 2rem);
+  line-height: 1.1;
+}
+
+.home-block small,
+.home-block-copy > span:last-child {
+  color: rgba(255, 255, 255, 0.82);
 }
 
 .hero {
@@ -609,17 +705,17 @@ h2 {
 @media (max-width: 900px) {
   .article-grid,
   .photo-grid,
-  .category-list,
   .about-section,
   .intro-band {
     grid-template-columns: 1fr;
   }
 
-  .photo-grid {
+  .home-block-list,
+  .category-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .category-list {
+  .photo-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
@@ -656,8 +752,15 @@ h2 {
     grid-template-columns: 1fr;
   }
 
+  .home-block-list,
   .category-list {
     grid-template-columns: 1fr;
+  }
+
+  .home-block,
+  .home-block.large {
+    min-height: 340px;
+    grid-row: auto;
   }
 
   .site-footer {
